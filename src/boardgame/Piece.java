@@ -1,6 +1,6 @@
 package boardgame;
 
-public abstract class Piece {
+public class Piece {
 	
 	protected Position position;
 	private Board board;
@@ -15,9 +15,5 @@ public abstract class Piece {
 	protected Board getBoard() {
 		return board;
 	}
-
-	public abstract boolean possibleMovies();
-	
-	
 	
 }
