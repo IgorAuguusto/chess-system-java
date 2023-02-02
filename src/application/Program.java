@@ -1,15 +1,15 @@
 package application;
 
+import boardgame.Board;
 import boardgame.Position;
 
 public class Program {
 
 	public static void main(String[] args) {
 		
-		Position po = new Position(1,2);
-		po.setValues(2, 0);;
+		Board board = new Board(8,8);
 		
-		System.out.println(po);
+		System.out.println(board.getRows() + ", " + board.getColumns());
 	}
 
 }
