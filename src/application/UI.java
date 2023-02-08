@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
 import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
@@ -59,9 +57,21 @@ public class UI {
 		printCapturedPieces(captured);
 		System.out.println();
 		System.out.println("Turn: " + chessMatch.getTurn());
-		System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
-		if (chessMatch.getCheck()) {
-			System.out.println(ANSI_RED + "CHECK!" + ANSI_RESET);
+		if (!chessMatch.getCheckMate()) {
+			System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+			if (chessMatch.getCheck()) {
+				System.out.println(ANSI_RED + "CHECK!" + ANSI_RESET);
+			}
+		}
+		else {
+			System.out.println(ANSI_RED + "CHECKMATE!" + ANSI_RESET);
+			if(chessMatch.getCurrentPlayer() == Color.WHITE) {
+				System.out.println(ANSI_GREEN + "Winner: " + ANSI_RESET + ANSI_WHITE + chessMatch.getCurrentPlayer() + ANSI_RESET);
+			}
+			else {
+				System.out.println(ANSI_GREEN + "Winner: " + ANSI_RESET + ANSI_PURPLE + chessMatch.getCurrentPlayer() + ANSI_RESET);
+			}
+	
 		}
 	}
 	
@@ -111,7 +121,7 @@ public class UI {
 		System.out.print(ANSI_WHITE);
 		System.out.println(Arrays.toString(white.toArray()));
 		System.out.print(ANSI_RESET);
-		System.out.print("Black: ");
+		System.out.print(ANSI_PURPLE + "Black: " + ANSI_RESET);
 		System.out.print(ANSI_PURPLE);
 		System.out.println(Arrays.toString(black.toArray()));
 		System.out.print(ANSI_RESET);
